@@ -27,10 +27,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     #new
-    'app',
 ]
+
+LOCAL_APPS = [
+    'app',
+    'api',
+]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+]
+
+INSTALLED_APPS = INSTALLED_APPS + LOCAL_APPS + THIRD_PARTY_APPS 
 
 #permissions - разрешения
 REST_FRAMEWORK = {
