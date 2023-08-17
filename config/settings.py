@@ -37,11 +37,11 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'drf_spectacular',
 ]
 
 INSTALLED_APPS = INSTALLED_APPS + LOCAL_APPS + THIRD_PARTY_APPS 
 
-#permissions - разрешения
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -49,7 +49,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 
@@ -148,10 +149,10 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8000',
+CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-]
+    'http://localhost:8000',
+)
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
@@ -160,3 +161,10 @@ CSRF_TRUSTED_ORIGINS = [
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "BLOG API PROJECT",
+    "DESCRIPTION": 'A sample blog to learn about DRF',
+    'VERSION': "1.0.0",
+    #OTHER SETTINGS
+}
